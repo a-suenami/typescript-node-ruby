@@ -8,11 +8,23 @@ module TypeScript
         Node.compile_file(hello_ts)
       end
 
-      its(:exit_status) { should == 0 }
-      it { should be_success }
-      its(:js) { should == "console.log(\"Hello TypeScript\");\n" }
-      its(:stdout) { should == "" }
-      its(:stderr) { should == "" }
+      describe "#exit_status" do
+        it { expect(subject.exit_status).to eq 0 }
+      end
+
+      it { expect(subject).to be_success }
+
+      describe "#js" do
+        it { expect(subject.js).to eq "console.log(\"Hello TypeScript\");\n" }
+      end
+
+      describe "#stdout" do
+        it { expect(subject.stdout).to eq "" }
+      end
+
+      describe "#stderr" do
+        it { expect(subject.stderr).to eq "" }
+      end
     end
   end
 end
